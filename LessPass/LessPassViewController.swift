@@ -25,9 +25,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     @IBOutlet weak var lengthTextField: UITextField!
     @IBOutlet weak var counterTextField: UITextField!
     
-    @IBOutlet weak var generateButton: FUIButton!
-    @IBOutlet weak var saveDefaultButton: FUIButton!
-    
     private var waitAlertResponder:SCLAlertViewResponder?
     
     override func viewDidLoad() {
@@ -105,10 +102,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         UIPreparation.configurateStyleOf(checkBox: numbersCheckBox)
         symbolsCheckBox.delegate = self
         UIPreparation.configurateStyleOf(checkBox: symbolsCheckBox)
-        
-        // Buttons
-        UIPreparation.configurateStyleOf(button: generateButton)
-        UIPreparation.configurateStyleOf(button: saveDefaultButton)
     }
     
     func checkFields() -> Bool {
