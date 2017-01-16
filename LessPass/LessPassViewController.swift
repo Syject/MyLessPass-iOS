@@ -8,7 +8,6 @@
 
 import UIKit
 import BEMCheckBox
-import FlatUIKit
 import SCLAlertView
 
 class LessPassViewController: UIViewController, BEMCheckBoxDelegate {

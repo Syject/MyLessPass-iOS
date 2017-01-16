@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FlatUIKit
 import BEMCheckBox
 import SCLAlertView
 
@@ -23,15 +22,6 @@ extension UIViewController {
     struct UIPreparation {
         static func configurateStyleOf(checkBox:BEMCheckBox) {
             checkBox.boxType = .square
-        }
-        static func configurateStyleOf(button:FUIButton) {
-            button.buttonColor = UIColor.LesspassColors.v2.mainColor
-            button.highlightedColor = UIColor.LesspassColors.v2.mainColor
-            button.shadowColor = UIColor.black
-            button.shadowHeight = 3.0
-            button.cornerRadius = 6.0
-            button.setTitleColor(UIColor.white, for: UIControlState.normal)
-            button.setTitleColor(UIColor.white, for: UIControlState.highlighted)
         }
     }
     func showFieldMissedAlert(for fieldName:String) {
