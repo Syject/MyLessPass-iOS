@@ -332,7 +332,7 @@
         <scene sceneID="ZBZ-2X-es2">
             <objects>
                 <navigationController id="Mz5-3Y-zIk" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Aoe-et-6nv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Aoe-et-6nv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -369,7 +369,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-Yz-K5e">
-                                <rect key="frame" x="0.0" y="108" width="414" height="628"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="siteCell" textLabel="qcz-Hr-leD" detailTextLabel="0OA-3B-B8N" style="IBUITableViewCellStyleSubtitle" id="cXs-5L-8lB">
@@ -398,27 +398,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ehq-wp-5By">
-                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="lFc-g3-IvZ" id="sit-q3-zYu"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ehq-wp-5By" firstAttribute="leading" secondItem="o5A-oc-EWP" secondAttribute="leading" id="Cha-9n-zFI"/>
                             <constraint firstItem="tMI-2t-k9L" firstAttribute="centerY" secondItem="o5A-oc-EWP" secondAttribute="centerY" id="E2g-Rc-jrs"/>
                             <constraint firstItem="Pxd-Td-XRA" firstAttribute="top" secondItem="HmC-Yz-K5e" secondAttribute="bottom" id="HEH-PD-O4L"/>
                             <constraint firstItem="tMI-2t-k9L" firstAttribute="centerX" secondItem="o5A-oc-EWP" secondAttribute="centerX" id="LNw-SA-0Fr"/>
-                            <constraint firstItem="HmC-Yz-K5e" firstAttribute="top" secondItem="Ehq-wp-5By" secondAttribute="bottom" id="R5B-9K-hZk"/>
                             <constraint firstItem="gBP-AT-NAb" firstAttribute="top" secondItem="tMI-2t-k9L" secondAttribute="bottom" constant="8" id="cP3-ui-I0Z"/>
-                            <constraint firstAttribute="trailing" secondItem="Ehq-wp-5By" secondAttribute="trailing" id="czC-9S-Lyg"/>
-                            <constraint firstItem="Ehq-wp-5By" firstAttribute="top" secondItem="enO-gw-2JJ" secondAttribute="bottom" id="gFt-tZ-FUE"/>
                             <constraint firstItem="gBP-AT-NAb" firstAttribute="centerX" secondItem="o5A-oc-EWP" secondAttribute="centerX" id="ihA-HE-oWu"/>
                             <constraint firstItem="HmC-Yz-K5e" firstAttribute="leading" secondItem="o5A-oc-EWP" secondAttribute="leading" id="mMA-CB-dHK"/>
                             <constraint firstAttribute="trailing" secondItem="HmC-Yz-K5e" secondAttribute="trailing" id="slB-AH-yDi"/>
+                            <constraint firstItem="HmC-Yz-K5e" firstAttribute="top" secondItem="enO-gw-2JJ" secondAttribute="bottom" id="uwv-Ig-tIf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved sites" id="YP6-1U-r4L">
@@ -430,31 +420,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchDisplayController" destination="CmU-4g-V1v" id="5qK-no-eCc"/>
                         <outlet property="tableView" destination="HmC-Yz-K5e" id="FiQ-sR-Ldb"/>
                         <segue destination="wgc-YH-tfm" kind="show" id="QUz-6F-9dN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fe7-p8-MSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="FvT-s0-Zwb">
-                    <connections>
-                        <outlet property="delegate" destination="lFc-g3-IvZ" id="2Md-Ij-mLw"/>
-                        <outlet property="searchContentsController" destination="lFc-g3-IvZ" id="9wI-aF-2bI"/>
-                        <outlet property="searchResultsDataSource" destination="lFc-g3-IvZ" id="VtO-hh-1Qe"/>
-                        <outlet property="searchResultsDelegate" destination="lFc-g3-IvZ" id="An0-nA-ENl"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="CmU-4g-V1v">
-                    <connections>
-                        <outlet property="delegate" destination="lFc-g3-IvZ" id="XyA-CI-EbV"/>
-                        <outlet property="searchBar" destination="Ehq-wp-5By" id="k2W-4i-WMQ"/>
-                        <outlet property="searchContentsController" destination="lFc-g3-IvZ" id="UmW-8H-fIh"/>
-                        <outlet property="searchResultsDataSource" destination="lFc-g3-IvZ" id="YFC-VV-DCg"/>
-                        <outlet property="searchResultsDelegate" destination="lFc-g3-IvZ" id="U1a-G9-ySw"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="880.79999999999995" y="-141.67916041979012"/>
+            <point key="canvasLocation" x="879.71014492753625" y="-141.84782608695653"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="6Uy-vP-PJs">
@@ -474,7 +446,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wgc-YH-tfm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ZU-HE-13V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ZU-HE-13V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

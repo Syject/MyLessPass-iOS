@@ -56,15 +56,19 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
             showCircularIcon: true
         )
         waitAlertResponder = SCLAlertView(appearance: appearance).showWait("Please wait...", subTitle: "Some magic is happening...", colorStyle: 0x1477D4)
-        DispatchQueue.main.async { [unowned self] in
+        print("waitAlert showed!")
+        DispatchQueue.global(qos: .userInteractive).async {
             let passwordValue = Password.calculateValue(withLesspassData: data, andTemplate: template)
-            self.waitAlertResponder?.close()
-            
-            let successAlert = SCLAlertView()
-            successAlert.addButton("Copy", action: {
-                UIPasteboard.general.string = passwordValue
-            })
-            successAlert.showSuccess("Here you are", subTitle: "Your password is \n\(passwordValue)\nThis alert will be closed after 30 seconds", duration: 30)
+            DispatchQueue.main.async {
+                self.waitAlertResponder?.close()
+                
+                let successAlert = SCLAlertView()
+                successAlert.addButton("Copy", action: {
+                    UIPasteboard.general.string = passwordValue
+                })
+                successAlert.showSuccess("Here you are",
+                                         subTitle: "Your password is \n\(passwordValue)\nThis alert will be closed after 30 seconds", duration: 30)
+            }
         }
         
     }

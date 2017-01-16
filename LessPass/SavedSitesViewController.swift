@@ -8,13 +8,17 @@
 
 import UIKit
 
-class SavedSitesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate,UISearchDisplayDelegate {
+class SavedSitesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
     dynamic var sites = [String]()
+    var filteredSites = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -23,28 +27,13 @@ class SavedSitesViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(SavedSitesViewController.getSitesList), for: .valueChanged)
         
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
+        
         getSitesList()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sites.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "siteCell", for: indexPath)
-        cell.textLabel?.text = sites[indexPath.row]
-        cell.detailTextLabel?.text = sites[indexPath.row] + " login"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            sites.remove(at: indexPath.row)
-        }
     }
     
     func getSitesList() {
@@ -66,5 +55,53 @@ class SavedSitesViewController: UIViewController, UITableViewDelegate, UITableVi
                 break
             }
         }
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredSites = sites.filter { site in
+            return site.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
+    }
+}
+
+extension SavedSitesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredSites.count
+        }
+        return sites.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "siteCell", for: indexPath)
+        let site: String
+        if searchController.isActive && searchController.searchBar.text != "" {
+            site = filteredSites[indexPath.row]
+        } else {
+            site = sites[indexPath.row]
+        }
+        cell.textLabel?.text = site
+        cell.detailTextLabel?.text = site + " login"
+        return cell
+    }
+}
+
+extension SavedSitesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            sites.remove(at: indexPath.row)
+        }
+    }
+}
+
+extension SavedSitesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 }
