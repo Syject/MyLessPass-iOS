@@ -9,8 +9,9 @@
 import UIKit
 import BEMCheckBox
 import FlatUIKit
+import SCLAlertView
 
-class LessPassViewController: UIViewController {
+class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     
     @IBOutlet weak var siteTextField: UITextField!
     @IBOutlet weak var loginTextField: UITextField!
@@ -27,37 +28,49 @@ class LessPassViewController: UIViewController {
     @IBOutlet weak var generateButton: FUIButton!
     @IBOutlet weak var saveDefaultButton: FUIButton!
     
+    private var waitAlertResponder:SCLAlertViewResponder?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         doUIPreparations()
-        
     }
 
     @IBAction func generateDidPressed(_ sender: Any) {
         if !checkFields() {
             return
         }
-        /*
-        let site = siteTextField.text
-
-        let login = "slupdog"
-        let masterPassword = "123"
-        let length = 16
-        let counter = 1
+        let site = siteTextField.text!
+        let login = loginTextField.text!
+        let masterPassword = masterPasswordTextField.text!
+        let length = Int(lengthTextField.text!)!
+        let counter = Int(counterTextField.text!)!
         
         let template = Template()
-        template.hasLowerCaseLetters = true
-        template.hasUpperCaseLetters = true
-        template.hasNumbers = true
-        template.hasSymbols = true
+        template.hasLowerCaseLetters = lowerCheckBox.on
+        template.hasUpperCaseLetters = upperCheckBox.on
+        template.hasNumbers = numbersCheckBox.on
+        template.hasSymbols = symbolsCheckBox.on
         template.length = length
         template.counter = counter
         
         let data = LesspassData(withSite: site, login: login, andMasterPassword: masterPassword)
         
-        print("Password is : " + Password.calculateValue(withLesspassData: data, andTemplate: template))
- */
-
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false,
+            showCircularIcon: true
+        )
+        waitAlertResponder = SCLAlertView(appearance: appearance).showWait("Please wait...", subTitle: "Some magic is happening...", colorStyle: 0x1477D4)
+        DispatchQueue.main.async { [unowned self] in
+            let passwordValue = Password.calculateValue(withLesspassData: data, andTemplate: template)
+            self.waitAlertResponder?.close()
+            
+            let successAlert = SCLAlertView()
+            successAlert.addButton("Copy", action: {
+                UIPasteboard.general.string = passwordValue
+            })
+            successAlert.showSuccess("Here you are", subTitle: "Your password is \n\(passwordValue)\nThis alert will be closed after 30 seconds", duration: 30)
+        }
+        
     }
     
     @IBAction func lengthValueChanged(_ sender: UIStepper) {
@@ -68,12 +81,29 @@ class LessPassViewController: UIViewController {
         counterTextField.text = String(Int(sender.value))
     }
     
+    // MARK: BEMCheckBoxDelegate
+    func didTap(_ checkBox: BEMCheckBox) {
+        if !lowerCheckBox.on &&
+            !upperCheckBox.on &&
+            !numbersCheckBox.on &&
+            !symbolsCheckBox.on {
+            lowerCheckBox.on = true
+            upperCheckBox.on = true
+            numbersCheckBox.on = true
+            symbolsCheckBox.on = true
+        }
+    }
+    
     // MARK: UI Setup
     func doUIPreparations() {
         // Checkboxes
+        lowerCheckBox.delegate = self
         UIPreparation.configurateStyleOf(checkBox: lowerCheckBox)
+        upperCheckBox.delegate = self
         UIPreparation.configurateStyleOf(checkBox: upperCheckBox)
+        numbersCheckBox.delegate = self
         UIPreparation.configurateStyleOf(checkBox: numbersCheckBox)
+        symbolsCheckBox.delegate = self
         UIPreparation.configurateStyleOf(checkBox: symbolsCheckBox)
         
         // Buttons
