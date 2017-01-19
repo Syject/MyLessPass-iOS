@@ -29,9 +29,16 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         doUIPreparations()
+        
+        siteTextField.delegate = self
+        loginTextField.delegate = self
+        masterPasswordTextField.delegate = self
+        
+      
     }
 
     @IBAction func generateDidPressed(_ sender: Any) {
+        self.view.endEditing(true)
         if !checkFields() {
             return
         }
@@ -120,6 +127,15 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
             showFieldMissedAlert(for: "master password")
             return false
         }
+        return true
+    }
+}
+
+
+
+extension LessPassViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }

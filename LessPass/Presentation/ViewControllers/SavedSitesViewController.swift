@@ -33,6 +33,7 @@ class SavedSitesViewController: UIViewController {
         tableView.tableHeaderView = searchController.searchBar
         
         
+        
         getSitesList()
     }
     

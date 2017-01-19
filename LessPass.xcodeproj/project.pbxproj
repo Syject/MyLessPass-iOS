@@ -11,7 +11,6 @@
 		9E09E0701E24FD5900B9F6EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E09E06E1E24FD5900B9F6EF /* Main.storyboard */; };
 		9E09E0751E24FD5900B9F6EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E09E0731E24FD5900B9F6EF /* LaunchScreen.storyboard */; };
 		9E2E13481E266F5700FF1C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E13451E266F5700FF1C9C /* AppDelegate.swift */; };
-		9E2E13491E266F5700FF1C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E2E13461E266F5700FF1C9C /* Assets.xcassets */; };
 		9E2E134A1E266F5700FF1C9C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E2E13471E266F5700FF1C9C /* Info.plist */; };
 		9E2E13961E26704100FF1C9C /* MG Basic Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E134E1E26704100FF1C9C /* MG Basic Math.swift */; };
 		9E2E13971E26704100FF1C9C /* MG Benchmark Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E134F1E26704100FF1C9C /* MG Benchmark Tools.swift */; };
@@ -24,9 +23,11 @@
 		9E2E13E21E26798F00FF1C9C /* LesspassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E13E11E26798F00FF1C9C /* LesspassData.swift */; };
 		9E2E13E41E2679D000FF1C9C /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E13E31E2679D000FF1C9C /* Password.swift */; };
 		9E2E13E61E267A8700FF1C9C /* Computations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E13E51E267A8700FF1C9C /* Computations.swift */; };
-		9E7C24D11E2CC18700F192B8 /* LessPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C24CE1E2CC18700F192B8 /* LessPassViewController.swift */; };
-		9E7C24D21E2CC18700F192B8 /* SavedSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C24CF1E2CC18700F192B8 /* SavedSitesViewController.swift */; };
-		9E7C24D41E2CC87300F192B8 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C24D31E2CC87300F192B8 /* UIExtensions.swift */; };
+		B1762E481E2D369000A8D122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1762E471E2D369000A8D122 /* Assets.xcassets */; };
+		B1762E501E2D4B5500A8D122 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4C1E2D4B5500A8D122 /* UIExtensions.swift */; };
+		B1762E511E2D4B5500A8D122 /* LessPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */; };
+		B1762E521E2D4B5500A8D122 /* SavedSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4F1E2D4B5500A8D122 /* SavedSitesViewController.swift */; };
+		B1762E541E2D4B6500A8D122 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E531E2D4B6500A8D122 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,6 @@
 		9E09E06F1E24FD5900B9F6EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E09E0741E24FD5900B9F6EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E2E13451E266F5700FF1C9C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9E2E13461E266F5700FF1C9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E2E13471E266F5700FF1C9C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E2E134E1E26704100FF1C9C /* MG Basic Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MG Basic Math.swift"; sourceTree = "<group>"; };
 		9E2E134F1E26704100FF1C9C /* MG Benchmark Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MG Benchmark Tools.swift"; sourceTree = "<group>"; };
@@ -48,9 +48,11 @@
 		9E2E13E11E26798F00FF1C9C /* LesspassData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LesspassData.swift; sourceTree = "<group>"; };
 		9E2E13E31E2679D000FF1C9C /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		9E2E13E51E267A8700FF1C9C /* Computations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computations.swift; sourceTree = "<group>"; };
-		9E7C24CE1E2CC18700F192B8 /* LessPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessPassViewController.swift; sourceTree = "<group>"; };
-		9E7C24CF1E2CC18700F192B8 /* SavedSitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSitesViewController.swift; sourceTree = "<group>"; };
-		9E7C24D31E2CC87300F192B8 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		B1762E471E2D369000A8D122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1762E4C1E2D4B5500A8D122 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessPassViewController.swift; sourceTree = "<group>"; };
+		B1762E4F1E2D4B5500A8D122 /* SavedSitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSitesViewController.swift; sourceTree = "<group>"; };
+		B1762E531E2D4B6500A8D122 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B458DA7D7A829AD5783A47DA /* Pods-LessPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LessPass/Pods-LessPass.debug.xcconfig"; sourceTree = "<group>"; };
 		FB149BF726B720D874F00651 /* Pods_LessPass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LessPass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,14 +98,12 @@
 		9E09E0691E24FD5800B9F6EF /* LessPass */ = {
 			isa = PBXGroup;
 			children = (
-				9E7C24CE1E2CC18700F192B8 /* LessPassViewController.swift */,
-				9E7C24CF1E2CC18700F192B8 /* SavedSitesViewController.swift */,
+				B1762E4B1E2D4B5500A8D122 /* Presentation */,
 				9E2E134C1E26701300FF1C9C /* Model */,
 				9E09E06E1E24FD5900B9F6EF /* Main.storyboard */,
 				9E09E0731E24FD5900B9F6EF /* LaunchScreen.storyboard */,
 				9E2E134B1E26701300FF1C9C /* Custom */,
 				9E2E13441E266F5700FF1C9C /* Supporting Files */,
-				9E7C24D31E2CC87300F192B8 /* UIExtensions.swift */,
 			);
 			path = LessPass;
 			sourceTree = "<group>";
@@ -111,8 +111,8 @@
 		9E2E13441E266F5700FF1C9C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B1762E471E2D369000A8D122 /* Assets.xcassets */,
 				9E2E13451E266F5700FF1C9C /* AppDelegate.swift */,
-				9E2E13461E266F5700FF1C9C /* Assets.xcassets */,
 				9E2E13471E266F5700FF1C9C /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -158,6 +158,25 @@
 				9E2E13E31E2679D000FF1C9C /* Password.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		B1762E4B1E2D4B5500A8D122 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B1762E4C1E2D4B5500A8D122 /* UIExtensions.swift */,
+				B1762E4D1E2D4B5500A8D122 /* ViewControllers */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B1762E4D1E2D4B5500A8D122 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */,
+				B1762E4F1E2D4B5500A8D122 /* SavedSitesViewController.swift */,
+				B1762E531E2D4B6500A8D122 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B8274B005C5B6CE326D8CD07 /* Pods */ = {
@@ -234,7 +253,7 @@
 			files = (
 				9E2E134A1E266F5700FF1C9C /* Info.plist in Resources */,
 				9E09E0751E24FD5900B9F6EF /* LaunchScreen.storyboard in Resources */,
-				9E2E13491E266F5700FF1C9C /* Assets.xcassets in Resources */,
+				B1762E481E2D369000A8D122 /* Assets.xcassets in Resources */,
 				9E09E0701E24FD5900B9F6EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,12 +313,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1762E511E2D4B5500A8D122 /* LessPassViewController.swift in Sources */,
 				9E2E13E41E2679D000FF1C9C /* Password.swift in Sources */,
-				9E7C24D11E2CC18700F192B8 /* LessPassViewController.swift in Sources */,
 				9E2E13981E26704100FF1C9C /* SMP Bignum Extensions.swift in Sources */,
-				9E7C24D21E2CC18700F192B8 /* SavedSitesViewController.swift in Sources */,
+				B1762E501E2D4B5500A8D122 /* UIExtensions.swift in Sources */,
 				9E2E13481E266F5700FF1C9C /* AppDelegate.swift in Sources */,
-				9E7C24D41E2CC87300F192B8 /* UIExtensions.swift in Sources */,
 				9E2E13961E26704100FF1C9C /* MG Basic Math.swift in Sources */,
 				9E2E139A1E26704100FF1C9C /* SMP String Module.swift in Sources */,
 				9E2E13DE1E26779A00FF1C9C /* Options.swift in Sources */,
@@ -307,7 +325,9 @@
 				9E2E13E61E267A8700FF1C9C /* Computations.swift in Sources */,
 				9E2E13991E26704100FF1C9C /* SMP Core.swift in Sources */,
 				9E2E13DC1E26771C00FF1C9C /* OneCharPerRule.swift in Sources */,
+				B1762E541E2D4B6500A8D122 /* LoginViewController.swift in Sources */,
 				9E2E13E21E26798F00FF1C9C /* LesspassData.swift in Sources */,
+				B1762E521E2D4B5500A8D122 /* SavedSitesViewController.swift in Sources */,
 				9E2E13971E26704100FF1C9C /* MG Benchmark Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
