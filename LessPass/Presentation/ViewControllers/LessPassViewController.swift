@@ -9,6 +9,8 @@
 import UIKit
 import BEMCheckBox
 import SCLAlertView
+import Alamofire
+import SwiftyJSON
 
 class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     
@@ -33,8 +35,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         siteTextField.delegate = self
         loginTextField.delegate = self
         masterPasswordTextField.delegate = self
-        
-      
     }
 
     @IBAction func generateDidPressed(_ sender: Any) {

@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class SavedSitesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     let searchController = UISearchController(searchResultsController: nil)
-    dynamic var sites = [String]()
-    var filteredSites = [String]()
+    dynamic var sites = [SavedOption]()
+    var filteredSites = [SavedOption]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +33,19 @@ class SavedSitesViewController: UIViewController {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
-        
-        
         getSitesList()
     }
     
     func getSitesList() {
-        sites.append("Site 1")
-        sites.append("Site 2")
-        sites.append("Site 3")
-        sites.append("Site 4")
-        sites.append("Site 5")
+        if API.isUserAuthorized {
+            API.getAllOptions(onSuccess: { downloadedSites in
+                self.sites = downloadedSites
+            }, onFailure: { _ in
+                SCLAlertView().showError("Error", subTitle: "You need to authorize first")
+            })
+        } else {
+            
+        }
         tableView.refreshControl!.endRefreshing()
     }
 
@@ -60,7 +63,8 @@ class SavedSitesViewController: UIViewController {
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         filteredSites = sites.filter { site in
-            return site.lowercased().contains(searchText.lowercased())
+            return site.site.lowercased().contains(searchText.lowercased())
+                || site.login.lowercased().contains(searchText.lowercased())
         }
         
         tableView.reloadData()
@@ -77,14 +81,14 @@ extension SavedSitesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "siteCell", for: indexPath)
-        let site: String
+        let site: SavedOption
         if searchController.isActive && searchController.searchBar.text != "" {
             site = filteredSites[indexPath.row]
         } else {
             site = sites[indexPath.row]
         }
-        cell.textLabel?.text = site
-        cell.detailTextLabel?.text = site + " login"
+        cell.textLabel?.text = site.site
+        cell.detailTextLabel?.text = site.login
         return cell
     }
 }
