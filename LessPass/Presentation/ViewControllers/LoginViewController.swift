@@ -11,19 +11,10 @@ import SCLAlertView
 
 class LoginViewController: UIViewController {
 
+    var delegate: LoginViewControllerDelegate?
     @IBOutlet weak var emailTextBox: UITextField!
     @IBOutlet weak var passwordTextBox: UITextField!
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func didLaterPress(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -32,12 +23,26 @@ class LoginViewController: UIViewController {
         
         API.requestToken(withEmail: emailTextBox.text!, andPassword: passwordTextBox.text!, onSuccess: { _ in
             SCLAlertView().showSuccess("Succeed", subTitle: "Now you have access to saved passwords").setDismissBlock {
+                self.delegate?.getSitesList()
                 self.dismiss(animated: true, completion: nil)
             }
-        }, onFailure: { _ in
-            SCLAlertView().showError("Error", subTitle: "Check your email and password")
+        }, onFailure: { error in
+            SCLAlertView().showError("Error", subTitle: error)
         })
     }
+    @IBAction func register(_ sender: Any) {
+        if !checkFields() { return }
+        
+        API.register(withEmail: emailTextBox.text!, andPassword: passwordTextBox.text!, onSuccess: { _ in
+            SCLAlertView().showSuccess("Succeed", subTitle: "Now you are registered on lesspass.com").setDismissBlock {
+                self.delegate?.getSitesList()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }, onFailure: { error in
+            SCLAlertView().showError("Error", subTitle: error)
+        })
+    }
+    
     func checkFields() -> Bool {
         guard !emailTextBox.text!.isEmpty else {
             showFieldMissedAlert(for: "email")

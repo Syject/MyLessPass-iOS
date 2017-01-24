@@ -9,13 +9,13 @@
 import Foundation
 
 class Options {
-    let site = ""
-    let login = ""
-    let hasLowerCaseLetters = true
-    let hasUpperCaseLetters = true
-    let hasNumbers = true
-    let hasSymbols = true
-    let length = 16
-    let counter = 1
-    let version = 2
+    var site = ""
+    var login = ""
+    var hasLowerCaseLetters = true
+    var hasUpperCaseLetters = true
+    var hasNumbers = true
+    var hasSymbols = true
+    var length = 16
+    var counter = 1
+    var version = 2
 }

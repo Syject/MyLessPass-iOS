@@ -9,9 +9,10 @@
 import UIKit
 import SCLAlertView
 
-class SavedSitesViewController: UIViewController {
+class SavedSitesViewController: UIViewController, LoginViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var accountBarButton: UIBarButtonItem!
     
     let searchController = UISearchController(searchResultsController: nil)
     dynamic var sites = [SavedOption]()
@@ -36,15 +37,37 @@ class SavedSitesViewController: UIViewController {
         getSitesList()
     }
     
+    @IBAction func accountDidPressed(_ sender: Any) {
+        
+        if API.isUserAuthorized {
+            API.unauthorizeUser()
+            getSitesList()
+            accountBarButton.title = "Log in"
+        } else {
+            presentLoginViewControler()
+        }
+    }
+    func presentLoginViewControler() {
+        performSegue(withIdentifier: "presentLoginViewController", sender: self)
+    }
     func getSitesList() {
         if API.isUserAuthorized {
+            accountBarButton.title = "Log out"
+            API.refreshToken(onSuccess: { _ in
+                
+            }, onFailure: { _ in
+            
+            })
             API.getAllOptions(onSuccess: { downloadedSites in
                 self.sites = downloadedSites
             }, onFailure: { _ in
-                SCLAlertView().showError("Error", subTitle: "You need to authorize first")
+                SCLAlertView().showError("Error", subTitle: "Cannot receive sites list")
             })
         } else {
-            
+            sites = []
+            if tableView.refreshControl!.isRefreshing {
+                SCLAlertView().showError("Error", subTitle: "You need to authorize first")
+            }
         }
         tableView.refreshControl!.endRefreshing()
     }
@@ -53,7 +76,7 @@ class SavedSitesViewController: UIViewController {
         if let keyPath = keyPath {
             switch keyPath {
             case "sites":
-                tableView.isHidden = sites.count == 0
+                tableView.isHidden = !API.isUserAuthorized
                 tableView.reloadData()
             default:
                 break
@@ -69,9 +92,35 @@ class SavedSitesViewController: UIViewController {
         
         tableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let segueIdentifier = segue.identifier else {
+            return
+        }
+        switch segueIdentifier {
+        case "presentLoginViewController":
+            let viewController = segue.destination as! LoginViewController
+            viewController.delegate = self
+        default:
+            return
+        }
+    }
 }
 
 extension SavedSitesViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var result = 0
+        if sites.count != 0 {
+            tableView.separatorStyle = .singleLine
+            result = 1
+            tableView.backgroundView = nil
+        }
+        else {
+            tableView.separatorStyle = .none
+        }
+        return result
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredSites.count
@@ -100,7 +149,12 @@ extension SavedSitesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            sites.remove(at: indexPath.row)
+            API.deleteOption(withId: sites[indexPath.row].id, onSuccess: {
+                self.sites.remove(at: indexPath.row)
+            }, onFailure: { _ in
+                self.tableView.isEditing = false
+            })
+            
         }
     }
 }

@@ -312,7 +312,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="LessPass" id="wIX-Kj-e6J">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="IZx-rj-7if"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="IZx-rj-7if">
+                            <connections>
+                                <action selector="saveDidPressed:" destination="Pza-FY-5HX" id="ISz-df-Urs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="counterTextField" destination="4eF-gb-ite" id="hno-5W-MkN"/>
@@ -434,6 +438,9 @@
                                                 <state key="normal" title="Register">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="register:" destination="f7a-Az-84r" eventType="touchUpInside" id="Lll-Wp-OYX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -481,15 +488,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is no saved sites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMI-2t-k9L">
-                                <rect key="frame" x="45.5" y="226.5" width="229" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in to access your sites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMI-2t-k9L">
+                                <rect key="frame" x="27" y="226.5" width="266" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press New to create one" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBP-AT-NAb">
-                                <rect key="frame" x="66.5" y="261.5" width="187" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -529,17 +530,15 @@
                             <constraint firstItem="tMI-2t-k9L" firstAttribute="centerY" secondItem="o5A-oc-EWP" secondAttribute="centerY" id="E2g-Rc-jrs"/>
                             <constraint firstItem="Pxd-Td-XRA" firstAttribute="top" secondItem="HmC-Yz-K5e" secondAttribute="bottom" id="HEH-PD-O4L"/>
                             <constraint firstItem="tMI-2t-k9L" firstAttribute="centerX" secondItem="o5A-oc-EWP" secondAttribute="centerX" id="LNw-SA-0Fr"/>
-                            <constraint firstItem="gBP-AT-NAb" firstAttribute="top" secondItem="tMI-2t-k9L" secondAttribute="bottom" constant="8" id="cP3-ui-I0Z"/>
-                            <constraint firstItem="gBP-AT-NAb" firstAttribute="centerX" secondItem="o5A-oc-EWP" secondAttribute="centerX" id="ihA-HE-oWu"/>
                             <constraint firstItem="HmC-Yz-K5e" firstAttribute="leading" secondItem="o5A-oc-EWP" secondAttribute="leading" id="mMA-CB-dHK"/>
                             <constraint firstAttribute="trailing" secondItem="HmC-Yz-K5e" secondAttribute="trailing" id="slB-AH-yDi"/>
                             <constraint firstItem="HmC-Yz-K5e" firstAttribute="top" secondItem="enO-gw-2JJ" secondAttribute="bottom" id="uwv-Ig-tIf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved sites" id="YP6-1U-r4L">
-                        <barButtonItem key="leftBarButtonItem" title="Account" id="0eU-Vq-Nb6">
+                        <barButtonItem key="leftBarButtonItem" title="Log in" id="0eU-Vq-Nb6">
                             <connections>
-                                <segue destination="f7a-Az-84r" kind="presentation" id="sPM-E5-ZtN"/>
+                                <action selector="accountDidPressed:" destination="lFc-g3-IvZ" id="Vu3-s9-uS8"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="BOK-T3-6LS">
@@ -549,8 +548,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accountBarButton" destination="0eU-Vq-Nb6" id="ROx-M1-x7L"/>
                         <outlet property="tableView" destination="HmC-Yz-K5e" id="FiQ-sR-Ldb"/>
                         <segue destination="wgc-YH-tfm" kind="show" id="QUz-6F-9dN"/>
+                        <segue destination="f7a-Az-84r" kind="presentation" identifier="presentLoginViewController" id="DOE-Oi-x0S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fe7-p8-MSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -593,6 +594,6 @@
         <image name="logo" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QUz-6F-9dN"/>
+        <segue reference="ftO-7Z-xtQ"/>
     </inferredMetricsTieBreakers>
 </document>

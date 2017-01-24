@@ -25,6 +25,7 @@
 		9E7109F01E3627530039FC5D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109EF1E3627530039FC5D /* Helpers.swift */; };
 		9E7109F31E362B270039FC5D /* SavedOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109F21E362B270039FC5D /* SavedOption.swift */; };
 		9E7109F51E362B3B0039FC5D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109F41E362B3B0039FC5D /* API.swift */; };
+		9EC0E0BA1E373FA000F1070C /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0E0B91E373FA000F1070C /* LoginViewControllerDelegate.swift */; };
 		B1762E481E2D369000A8D122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1762E471E2D369000A8D122 /* Assets.xcassets */; };
 		B1762E501E2D4B5500A8D122 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4C1E2D4B5500A8D122 /* UIExtensions.swift */; };
 		B1762E511E2D4B5500A8D122 /* LessPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */; };
@@ -53,6 +54,7 @@
 		9E7109EF1E3627530039FC5D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9E7109F21E362B270039FC5D /* SavedOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedOption.swift; sourceTree = "<group>"; };
 		9E7109F41E362B3B0039FC5D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9EC0E0B91E373FA000F1070C /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		B1762E471E2D369000A8D122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1762E4C1E2D4B5500A8D122 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessPassViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,15 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		9EC0E0B81E373F7F00F1070C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B1762E531E2D4B6500A8D122 /* LoginViewController.swift */,
+				9EC0E0B91E373FA000F1070C /* LoginViewControllerDelegate.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		B1762E4B1E2D4B5500A8D122 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +201,7 @@
 			children = (
 				B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */,
 				B1762E4F1E2D4B5500A8D122 /* SavedSitesViewController.swift */,
-				B1762E531E2D4B6500A8D122 /* LoginViewController.swift */,
+				9EC0E0B81E373F7F00F1070C /* Login */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -329,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1762E511E2D4B5500A8D122 /* LessPassViewController.swift in Sources */,
+				9EC0E0BA1E373FA000F1070C /* LoginViewControllerDelegate.swift in Sources */,
 				9E7109F51E362B3B0039FC5D /* API.swift in Sources */,
 				9E7109E81E361F9B0039FC5D /* LesspassData.swift in Sources */,
 				9E2E13981E26704100FF1C9C /* SMP Bignum Extensions.swift in Sources */,

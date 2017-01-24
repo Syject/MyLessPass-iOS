@@ -27,6 +27,7 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     @IBOutlet weak var counterTextField: UITextField!
     
     private var waitAlertResponder:SCLAlertViewResponder?
+    static private var isFirstTimeLauched:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,20 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         siteTextField.delegate = self
         loginTextField.delegate = self
         masterPasswordTextField.delegate = self
+        
+        if LessPassViewController.isFirstTimeLauched {
+            switchToMaster()
+            LessPassViewController.isFirstTimeLauched = false
+        }
+    }
+    func switchToMaster() {
+        if let splitViewController = splitViewController {
+            if splitViewController.isCollapsed {
+                let detailNavigationController = parent as! UINavigationController
+                let masterNavigationController = detailNavigationController.parent as! UINavigationController
+                masterNavigationController.popToRootViewController(animated: false)
+            }
+        }
     }
 
     @IBAction func generateDidPressed(_ sender: Any) {
@@ -78,6 +93,22 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
             }
         }
         
+    }
+    @IBAction func saveDidPressed(_ sender: Any) {
+        guard API.isUserAuthorized else { SCLAlertView().showError("Error", subTitle: "You need to log in"); return }
+        guard checkFields() else { return }
+        
+        let options = Options()
+        options.site = siteTextField.text!
+        options.login = loginTextField.text!
+        options.length = Int(lengthTextField.text!)!
+        options.counter = Int(counterTextField.text!)!
+        options.hasLowerCaseLetters = lowerCheckBox.on
+        options.hasUpperCaseLetters = upperCheckBox.on
+        options.hasNumbers = numbersCheckBox.on
+        options.hasSymbols = symbolsCheckBox.on
+        
+        API.saveOptions(options, onSuccess: {}, onFailure: {_ in})
     }
     
     @IBAction func lengthValueChanged(_ sender: UIStepper) {
@@ -130,8 +161,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         return true
     }
 }
-
-
 
 extension LessPassViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
