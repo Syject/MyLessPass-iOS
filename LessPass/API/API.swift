@@ -147,9 +147,9 @@ class API {
         }
     }
     
-    static func saveOptions(_ options: Options, onSuccess successBlock:@escaping SuccessBlock, onFailure failureBlock:@escaping FailureBlock) {
+    static func saveOptions(_ options: SavedOption, onSuccess successBlock:@escaping SuccessBlock, onFailure failureBlock:@escaping FailureBlock) {
         guard let token = token else { print("No token"); return }
-        let parameters: Parameters = [
+        var parameters: Parameters = [
             "counter" : options.counter,
             "length" : options.length,
             "login" : options.login,
@@ -160,6 +160,9 @@ class API {
             "site" : options.site,
             "version" : options.version
         ]
+        if let optionId = options.id {
+            parameters["id"] = optionId
+        }
         let headers: HTTPHeaders = [ "Authorization": "JWT \(token)" ]
         
         Alamofire.request(Constants.URLs.options,

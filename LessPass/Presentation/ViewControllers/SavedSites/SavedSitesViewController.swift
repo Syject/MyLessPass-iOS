@@ -11,14 +11,15 @@ import SCLAlertView
 
 class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,LessPassViewControllerDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var accountBarButton: UIBarButtonItem!
+    @IBOutlet fileprivate weak var tableView: UITableView!
+    @IBOutlet fileprivate weak var accountBarButton: UIBarButtonItem!
     
-    let searchController = UISearchController(searchResultsController: nil)
-    dynamic var sites = [SavedOption]()
-    var filteredSites = [SavedOption]()
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    fileprivate dynamic var sites = [SavedOption]()
+    fileprivate var filteredSites = [SavedOption]()
     
-    override func viewDidLoad() {
+    
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
@@ -38,7 +39,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         getSitesList()
     }
     
-    @IBAction func accountDidPressed(_ sender: Any) {
+    @IBAction fileprivate func accountDidPressed(_ sender: Any) {
         
         if API.isUserAuthorized {
             API.unauthorizeUser()
@@ -51,10 +52,10 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
             presentLoginViewControler()
         }
     }
-    func presentLoginViewControler() {
+    fileprivate func presentLoginViewControler() {
         performSegue(withIdentifier: "presentLoginViewController", sender: self)
     }
-    func getSitesList() {
+    internal func getSitesList() {
         if API.isUserAuthorized {
             accountBarButton.title = "Log out"
             API.refreshToken(onSuccess: { _ in
@@ -78,7 +79,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         tableView.refreshControl!.endRefreshing()
     }
 
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let keyPath = keyPath {
             switch keyPath {
             case "sites":
@@ -90,7 +91,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         }
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
+    fileprivate func filterContentForSearchText(searchText: String, scope: String = "All") {
         filteredSites = sites.filter { site in
             return site.site.lowercased().contains(searchText.lowercased())
                 || site.login.lowercased().contains(searchText.lowercased())
@@ -99,7 +100,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         tableView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let segueIdentifier = segue.identifier else {
             return
@@ -111,6 +112,10 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         case "showLessPassNew":
             let viewController = (segue.destination as! UINavigationController).childViewControllers[0] as! LessPassViewController
             viewController.delegate = self
+        case "showLessPassSaved":
+            let viewController = (segue.destination as! UINavigationController).childViewControllers[0] as! LessPassViewController
+            viewController.choosedSavedOption = sender as? SavedOption
+            viewController.delegate = self
         default:
             return
         }
@@ -118,7 +123,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
 }
 
 extension SavedSitesViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    internal func numberOfSections(in tableView: UITableView) -> Int {
         var result = 0
         if sites.count != 0 {
             tableView.separatorStyle = .singleLine
@@ -130,14 +135,14 @@ extension SavedSitesViewController: UITableViewDataSource {
         }
         return result
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != "" {
             return filteredSites.count
         }
         return sites.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "siteCell", for: indexPath)
         let site: SavedOption
         if searchController.isActive && searchController.searchBar.text != "" {
@@ -152,13 +157,16 @@ extension SavedSitesViewController: UITableViewDataSource {
 }
 
 extension SavedSitesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    internal func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showLessPassSaved", sender: sites[indexPath.row])
+    }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            API.deleteOption(withId: sites[indexPath.row].id, onSuccess: {
+            API.deleteOption(withId: sites[indexPath.row].id!, onSuccess: {
                 self.sites.remove(at: indexPath.row)
             }, onFailure: { _ in
                 self.tableView.isEditing = false
@@ -169,7 +177,7 @@ extension SavedSitesViewController: UITableViewDelegate {
 }
 
 extension SavedSitesViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
+    internal func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 }

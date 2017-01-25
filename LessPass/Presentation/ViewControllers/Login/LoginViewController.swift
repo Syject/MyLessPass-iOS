@@ -12,20 +12,20 @@ import SCLAlertView
 class LoginViewController: UIViewController {
 
     var delegate: LoginViewControllerDelegate?
-    @IBOutlet weak var emailTextBox: UITextField!
-    @IBOutlet weak var passwordTextBox: UITextField!
+    @IBOutlet fileprivate weak var emailTextBox: UITextField!
+    @IBOutlet fileprivate weak var passwordTextBox: UITextField!
     
-    override func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         emailTextBox.text = KeychainSwift().get("email")
         passwordTextBox.text = KeychainSwift().get("password")
         
     }
     
-    @IBAction func didLaterPress(_ sender: Any) {
+    @IBAction fileprivate func didLaterPress(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func signIn(_ sender: Any) {
+    @IBAction fileprivate func signIn(_ sender: Any) {
         if !checkFields() { return }
         
         API.requestToken(withEmail: emailTextBox.text!, andPassword: passwordTextBox.text!, onSuccess: { _ in
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
             SCLAlertView().showError("Error", subTitle: error)
         })
     }
-    @IBAction func register(_ sender: Any) {
+    @IBAction fileprivate func register(_ sender: Any) {
         if !checkFields() { return }
         
         API.register(withEmail: emailTextBox.text!, andPassword: passwordTextBox.text!, onSuccess: { _ in
@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
         })
     }
     
-    func checkFields() -> Bool {
+    fileprivate func checkFields() -> Bool {
         guard !emailTextBox.text!.isEmpty else {
             showFieldMissedAlert(for: "email")
             return false
