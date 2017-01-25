@@ -22,7 +22,11 @@ class Options: NSObject {
 }
 
 @objc class SavedOption: Options {
-    var id:String
+    var id: String?
+    
+    override init() {
+        super.init()
+    }
     
     init(with json:JSON) {
         id = json["id"].string!

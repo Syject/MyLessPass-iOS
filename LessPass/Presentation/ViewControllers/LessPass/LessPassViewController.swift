@@ -29,6 +29,7 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     fileprivate var waitAlertResponder:SCLAlertViewResponder?
     static fileprivate var isFirstTimeLauched:Bool = true
     
+    var choosedSavedOption: SavedOption?
     var delegate: LessPassViewControllerDelegate?
     
     internal override func viewDidLoad() {
@@ -46,16 +47,35 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     }
     
     fileprivate func setDefaultValues() {
-        siteTextField.text = UserDefaults.standard.string(forKey: "siteTextField")
-        loginTextField.text = UserDefaults.standard.string(forKey: "loginTextField")
+        siteTextField.text = choosedSavedOption?.site
+            ?? UserDefaults.standard.string(forKey: "siteTextField")
+        loginTextField.text = choosedSavedOption?.login
+            ?? UserDefaults.standard.string(forKey: "loginTextField")
         
-        lowerCheckBox.on = !UserDefaults.standard.bool(forKey: "lowerCheckBox")
-        upperCheckBox.on = !UserDefaults.standard.bool(forKey: "upperCheckBox")
-        numbersCheckBox.on = !UserDefaults.standard.bool(forKey: "numbersCheckBox")
-        symbolsCheckBox.on = !UserDefaults.standard.bool(forKey: "symbolsCheckBox")
+        lowerCheckBox.on = choosedSavedOption?.hasLowerCaseLetters
+            ?? !UserDefaults.standard.bool(forKey: "lowerCheckBox")
+        upperCheckBox.on = choosedSavedOption?.hasUpperCaseLetters
+            ?? !UserDefaults.standard.bool(forKey: "upperCheckBox")
+        numbersCheckBox.on = choosedSavedOption?.hasNumbers
+            ?? !UserDefaults.standard.bool(forKey: "numbersCheckBox")
+        symbolsCheckBox.on = choosedSavedOption?.hasSymbols
+            ?? !UserDefaults.standard.bool(forKey: "symbolsCheckBox")
         
-        lengthTextField.text = UserDefaults.standard.string(forKey: "lengthTextField") ?? "16"
-        counterTextField.text = UserDefaults.standard.string(forKey: "counterTextField") ?? "1"
+        if let length = choosedSavedOption?.length {
+            lengthTextField.text = "\(length)"
+        } else {
+            lengthTextField.text = UserDefaults.standard.string(forKey: "lengthTextField")
+                ?? "16"
+        }
+        
+        if let counter = choosedSavedOption?.counter {
+            counterTextField.text = "\(counter)"
+        } else {
+            counterTextField.text = UserDefaults.standard.string(forKey: "counterTextField")
+                ?? "1"
+        }
+        
+        
     }
     
     fileprivate func switchToMaster() {
@@ -127,15 +147,16 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         guard API.isUserAuthorized else { SCLAlertView().showError("Error", subTitle: "You need to log in"); return }
         guard checkFields() else { return }
         
-        let options = Options()
+        let options = SavedOption()
         options.site = siteTextField.text!
         options.login = loginTextField.text!
         options.length = Int(lengthTextField.text!)!
         options.counter = Int(counterTextField.text!)!
-        options.hasLowerCaseLetters = !lowerCheckBox.on
-        options.hasUpperCaseLetters = !upperCheckBox.on
-        options.hasNumbers = !numbersCheckBox.on
-        options.hasSymbols = !symbolsCheckBox.on
+        options.hasLowerCaseLetters = lowerCheckBox.on
+        options.hasUpperCaseLetters = upperCheckBox.on
+        options.hasNumbers = numbersCheckBox.on
+        options.hasSymbols = symbolsCheckBox.on
+        options.id = choosedSavedOption?.id
         
         API.saveOptions(options, onSuccess: { [unowned self] in
             self.delegate?.getSitesList()

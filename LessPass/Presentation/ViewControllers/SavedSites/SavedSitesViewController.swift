@@ -18,6 +18,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
     fileprivate dynamic var sites = [SavedOption]()
     fileprivate var filteredSites = [SavedOption]()
     
+    
     internal override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,6 +112,10 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         case "showLessPassNew":
             let viewController = (segue.destination as! UINavigationController).childViewControllers[0] as! LessPassViewController
             viewController.delegate = self
+        case "showLessPassSaved":
+            let viewController = (segue.destination as! UINavigationController).childViewControllers[0] as! LessPassViewController
+            viewController.choosedSavedOption = sender as? SavedOption
+            viewController.delegate = self
         default:
             return
         }
@@ -155,10 +160,13 @@ extension SavedSitesViewController: UITableViewDelegate {
     internal func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showLessPassSaved", sender: sites[indexPath.row])
+    }
     
     internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            API.deleteOption(withId: sites[indexPath.row].id, onSuccess: {
+            API.deleteOption(withId: sites[indexPath.row].id!, onSuccess: {
                 self.sites.remove(at: indexPath.row)
             }, onFailure: { _ in
                 self.tableView.isEditing = false
