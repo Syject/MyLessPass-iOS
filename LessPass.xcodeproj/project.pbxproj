@@ -19,13 +19,10 @@
 		9E2E13E61E267A8700FF1C9C /* Computations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2E13E51E267A8700FF1C9C /* Computations.swift */; };
 		9E7109E81E361F9B0039FC5D /* LesspassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109E31E361F9B0039FC5D /* LesspassData.swift */; };
 		9E7109E91E361F9B0039FC5D /* OneCharPerRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109E41E361F9B0039FC5D /* OneCharPerRule.swift */; };
-		9E7109EA1E361F9B0039FC5D /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109E51E361F9B0039FC5D /* Options.swift */; };
 		9E7109EB1E361F9B0039FC5D /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109E61E361F9B0039FC5D /* Password.swift */; };
 		9E7109EC1E361F9B0039FC5D /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109E71E361F9B0039FC5D /* Template.swift */; };
 		9E7109F01E3627530039FC5D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109EF1E3627530039FC5D /* Helpers.swift */; };
-		9E7109F31E362B270039FC5D /* SavedOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109F21E362B270039FC5D /* SavedOption.swift */; };
 		9E7109F51E362B3B0039FC5D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109F41E362B3B0039FC5D /* API.swift */; };
-		9EC0E0BA1E373FA000F1070C /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC0E0B91E373FA000F1070C /* LoginViewControllerDelegate.swift */; };
 		B10BB9371E3905490085F112 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB9361E3905490085F112 /* KeychainHelper.swift */; };
 		B10BB9501E3911B60085F112 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB93A1E3911B60085F112 /* IQNSArray+Sort.swift */; };
 		B10BB9511E3911B60085F112 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB93B1E3911B60085F112 /* IQUIScrollView+Additions.swift */; };
@@ -44,12 +41,14 @@
 		B10BB95E1E3911B60085F112 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB94C1E3911B60085F112 /* IQToolbar.swift */; };
 		B10BB95F1E3911B60085F112 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB94D1E3911B60085F112 /* IQUIView+IQKeyboardToolbar.swift */; };
 		B10BB9601E3911B60085F112 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B10BB94F1E3911B60085F112 /* IQKeyboardManager.bundle */; };
-		B10BB9631E391D050085F112 /* LessPassViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB9621E391D050085F112 /* LessPassViewControllerDelegate.swift */; };
+		B10BB9681E3949DA0085F112 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB9671E3949DA0085F112 /* Options.swift */; };
+		B10BB9721E394A200085F112 /* LessPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB96A1E394A200085F112 /* LessPassViewController.swift */; };
+		B10BB9731E394A200085F112 /* LessPassViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB96B1E394A200085F112 /* LessPassViewControllerDelegate.swift */; };
+		B10BB9741E394A200085F112 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB96D1E394A200085F112 /* LoginViewController.swift */; };
+		B10BB9751E394A200085F112 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB96E1E394A200085F112 /* LoginViewControllerDelegate.swift */; };
+		B10BB9761E394A200085F112 /* SavedSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB9701E394A200085F112 /* SavedSitesViewController.swift */; };
 		B1762E481E2D369000A8D122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1762E471E2D369000A8D122 /* Assets.xcassets */; };
 		B1762E501E2D4B5500A8D122 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4C1E2D4B5500A8D122 /* UIExtensions.swift */; };
-		B1762E511E2D4B5500A8D122 /* LessPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */; };
-		B1762E521E2D4B5500A8D122 /* SavedSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E4F1E2D4B5500A8D122 /* SavedSitesViewController.swift */; };
-		B1762E541E2D4B6500A8D122 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1762E531E2D4B6500A8D122 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,13 +66,10 @@
 		9E2E13E51E267A8700FF1C9C /* Computations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computations.swift; sourceTree = "<group>"; };
 		9E7109E31E361F9B0039FC5D /* LesspassData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LesspassData.swift; sourceTree = "<group>"; };
 		9E7109E41E361F9B0039FC5D /* OneCharPerRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneCharPerRule.swift; sourceTree = "<group>"; };
-		9E7109E51E361F9B0039FC5D /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		9E7109E61E361F9B0039FC5D /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		9E7109E71E361F9B0039FC5D /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		9E7109EF1E3627530039FC5D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		9E7109F21E362B270039FC5D /* SavedOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedOption.swift; sourceTree = "<group>"; };
 		9E7109F41E362B3B0039FC5D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		9EC0E0B91E373FA000F1070C /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		B10BB9361E3905490085F112 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		B10BB93A1E3911B60085F112 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		B10BB93B1E3911B60085F112 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
@@ -93,12 +89,14 @@
 		B10BB94C1E3911B60085F112 /* IQToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQToolbar.swift; sourceTree = "<group>"; };
 		B10BB94D1E3911B60085F112 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		B10BB94F1E3911B60085F112 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		B10BB9621E391D050085F112 /* LessPassViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessPassViewControllerDelegate.swift; sourceTree = "<group>"; };
+		B10BB9671E3949DA0085F112 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		B10BB96A1E394A200085F112 /* LessPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessPassViewController.swift; sourceTree = "<group>"; };
+		B10BB96B1E394A200085F112 /* LessPassViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessPassViewControllerDelegate.swift; sourceTree = "<group>"; };
+		B10BB96D1E394A200085F112 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B10BB96E1E394A200085F112 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
+		B10BB9701E394A200085F112 /* SavedSitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSitesViewController.swift; sourceTree = "<group>"; };
 		B1762E471E2D369000A8D122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1762E4C1E2D4B5500A8D122 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
-		B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessPassViewController.swift; sourceTree = "<group>"; };
-		B1762E4F1E2D4B5500A8D122 /* SavedSitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSitesViewController.swift; sourceTree = "<group>"; };
-		B1762E531E2D4B6500A8D122 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B458DA7D7A829AD5783A47DA /* Pods-LessPass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LessPass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LessPass/Pods-LessPass.debug.xcconfig"; sourceTree = "<group>"; };
 		FB149BF726B720D874F00651 /* Pods_LessPass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LessPass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -203,7 +201,6 @@
 			children = (
 				9E7109E31E361F9B0039FC5D /* LesspassData.swift */,
 				9E7109E41E361F9B0039FC5D /* OneCharPerRule.swift */,
-				9E7109E51E361F9B0039FC5D /* Options.swift */,
 				9E7109E61E361F9B0039FC5D /* Password.swift */,
 				9E7109E71E361F9B0039FC5D /* Template.swift */,
 			);
@@ -213,19 +210,10 @@
 		9E7109F11E362B0D0039FC5D /* API */ = {
 			isa = PBXGroup;
 			children = (
-				9E7109F21E362B270039FC5D /* SavedOption.swift */,
 				9E7109F41E362B3B0039FC5D /* API.swift */,
+				B10BB9671E3949DA0085F112 /* Options.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		9EC0E0B81E373F7F00F1070C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				B1762E531E2D4B6500A8D122 /* LoginViewController.swift */,
-				9EC0E0B91E373FA000F1070C /* LoginViewControllerDelegate.swift */,
-			);
-			name = Login;
 			sourceTree = "<group>";
 		};
 		B10BB9381E3911B60085F112 /* IQKeyboardManagerSwift */ = {
@@ -293,13 +281,30 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B10BB9611E391CE30085F112 /* LessPass */ = {
+		B10BB9691E394A200085F112 /* LessPass */ = {
 			isa = PBXGroup;
 			children = (
-				B1762E4E1E2D4B5500A8D122 /* LessPassViewController.swift */,
-				B10BB9621E391D050085F112 /* LessPassViewControllerDelegate.swift */,
+				B10BB96A1E394A200085F112 /* LessPassViewController.swift */,
+				B10BB96B1E394A200085F112 /* LessPassViewControllerDelegate.swift */,
 			);
-			name = LessPass;
+			path = LessPass;
+			sourceTree = "<group>";
+		};
+		B10BB96C1E394A200085F112 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B10BB96D1E394A200085F112 /* LoginViewController.swift */,
+				B10BB96E1E394A200085F112 /* LoginViewControllerDelegate.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B10BB96F1E394A200085F112 /* SavedSites */ = {
+			isa = PBXGroup;
+			children = (
+				B10BB9701E394A200085F112 /* SavedSitesViewController.swift */,
+			);
+			path = SavedSites;
 			sourceTree = "<group>";
 		};
 		B1762E4B1E2D4B5500A8D122 /* Presentation */ = {
@@ -314,9 +319,9 @@
 		B1762E4D1E2D4B5500A8D122 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B10BB9611E391CE30085F112 /* LessPass */,
-				B1762E4F1E2D4B5500A8D122 /* SavedSitesViewController.swift */,
-				9EC0E0B81E373F7F00F1070C /* Login */,
+				B10BB9691E394A200085F112 /* LessPass */,
+				B10BB96C1E394A200085F112 /* Login */,
+				B10BB96F1E394A200085F112 /* SavedSites */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -455,8 +460,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1762E511E2D4B5500A8D122 /* LessPassViewController.swift in Sources */,
-				9EC0E0BA1E373FA000F1070C /* LoginViewControllerDelegate.swift in Sources */,
 				9E7109F51E362B3B0039FC5D /* API.swift in Sources */,
 				B10BB9531E3911B60085F112 /* IQUIView+Hierarchy.swift in Sources */,
 				B10BB9591E3911B60085F112 /* IQKeyboardReturnKeyHandler.swift in Sources */,
@@ -473,26 +476,27 @@
 				B10BB95F1E3911B60085F112 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				9E7109EC1E361F9B0039FC5D /* Template.swift in Sources */,
 				B1762E501E2D4B5500A8D122 /* UIExtensions.swift in Sources */,
-				9E7109F31E362B270039FC5D /* SavedOption.swift in Sources */,
 				B10BB9511E3911B60085F112 /* IQUIScrollView+Additions.swift in Sources */,
 				9E2E13481E266F5700FF1C9C /* AppDelegate.swift in Sources */,
-				B10BB9631E391D050085F112 /* LessPassViewControllerDelegate.swift in Sources */,
-				9E7109EA1E361F9B0039FC5D /* Options.swift in Sources */,
 				B10BB9521E3911B60085F112 /* IQUITextFieldView+Additions.swift in Sources */,
 				9E2E13961E26704100FF1C9C /* MG Basic Math.swift in Sources */,
+				B10BB9761E394A200085F112 /* SavedSitesViewController.swift in Sources */,
 				9E2E139A1E26704100FF1C9C /* SMP String Module.swift in Sources */,
 				B10BB95B1E3911B60085F112 /* IQBarButtonItem.swift in Sources */,
 				9E2E13E61E267A8700FF1C9C /* Computations.swift in Sources */,
 				B10BB9501E3911B60085F112 /* IQNSArray+Sort.swift in Sources */,
 				B10BB9551E3911B60085F112 /* IQUIWindow+Hierarchy.swift in Sources */,
+				B10BB9721E394A200085F112 /* LessPassViewController.swift in Sources */,
 				9E7109F01E3627530039FC5D /* Helpers.swift in Sources */,
 				9E2E13991E26704100FF1C9C /* SMP Core.swift in Sources */,
-				B1762E541E2D4B6500A8D122 /* LoginViewController.swift in Sources */,
-				B1762E521E2D4B5500A8D122 /* SavedSitesViewController.swift in Sources */,
+				B10BB9741E394A200085F112 /* LoginViewController.swift in Sources */,
+				B10BB9681E3949DA0085F112 /* Options.swift in Sources */,
 				B10BB95C1E3911B60085F112 /* IQPreviousNextView.swift in Sources */,
 				9E2E13971E26704100FF1C9C /* MG Benchmark Tools.swift in Sources */,
 				B10BB95D1E3911B60085F112 /* IQTitleBarButtonItem.swift in Sources */,
+				B10BB9751E394A200085F112 /* LoginViewControllerDelegate.swift in Sources */,
 				B10BB95E1E3911B60085F112 /* IQToolbar.swift in Sources */,
+				B10BB9731E394A200085F112 /* LessPassViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

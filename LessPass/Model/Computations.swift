@@ -23,7 +23,7 @@ extension Password {
         return result
     }
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let lowercase = "lowercase"
         static let uppercase = "uppercase"
         static let numbers = "numbers"
@@ -34,7 +34,7 @@ extension Password {
                                        "symbols" : "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"]
     }
     
-    private static func calculateEntropy(withLesspassData lesspassData:LesspassData, andTemplate template:Template) -> String {
+    fileprivate static func calculateEntropy(withLesspassData lesspassData:LesspassData, andTemplate template:Template) -> String {
         var salt = lesspassData.site + lesspassData.login
         
         if template.counter < 16 {
@@ -43,10 +43,11 @@ extension Password {
             salt += String(format:"%2X", template.counter)
         }
         let result = bytesToHex(try! PKCS5.PBKDF2(password: Array(lesspassData.masterPassword.utf8), salt: Array(salt.utf8), iterations: 100000, keyLength: template.keylen, variant: .sha256).calculate())
+        
         return result
     }
     
-    private static func getConfiguredRules(withTemplate template:Template) -> [String] {
+    fileprivate static func getConfiguredRules(withTemplate template:Template) -> [String] {
         var result:[String] = []
         if template.hasLowerCaseLetters { result.append(Constants.lowercase) }
         if template.hasUpperCaseLetters { result.append(Constants.uppercase) }
@@ -55,7 +56,7 @@ extension Password {
         return result
     }
     
-    private static func getSetOfCharacters(fromRules rules:[String]) -> String {
+    fileprivate static func getSetOfCharacters(fromRules rules:[String]) -> String {
         var result = ""
         if rules.count == 0 {
             result.append(Constants.characterSubsets[Constants.lowercase]!)
@@ -70,7 +71,7 @@ extension Password {
         return result
     }
     
-    private static func consumeEntropy(withGeneratedPassword generatedPassword:String, quotient:Bignum, setOfCharacters:String, andMaxLength maxLength:Int) -> Password {
+    fileprivate static func consumeEntropy(withGeneratedPassword generatedPassword:String, quotient:Bignum, setOfCharacters:String, andMaxLength maxLength:Int) -> Password {
         if generatedPassword.characters.count >= maxLength {
             return Password(withValue: generatedPassword, andEntropy: quotient)
         }
@@ -82,7 +83,7 @@ extension Password {
         return consumeEntropy(withGeneratedPassword: newPassword, quotient: newQuotient, setOfCharacters: setOfCharacters, andMaxLength: maxLength)
     }
     
-    private static func getOneCharPerRule(withEntropy entropy:Bignum, andRules rules: [String]) -> OneCharPerRule {
+    fileprivate static func getOneCharPerRule(withEntropy entropy:Bignum, andRules rules: [String]) -> OneCharPerRule {
         var oneCharPerRules = ""
         var entropy = entropy
         for rule in rules {
@@ -93,7 +94,7 @@ extension Password {
         return OneCharPerRule(withValue: oneCharPerRules, andEntropy: entropy)
     }
     
-    private static func insertStringPseudoRandomly(_ string:String, inGeneratedPassword generatedPassword:String, withEntropy entropy:Bignum) -> String {
+    fileprivate static func insertStringPseudoRandomly(_ string:String, inGeneratedPassword generatedPassword:String, withEntropy entropy:Bignum) -> String {
         var generatedPassword = generatedPassword
         var entropy = entropy
         for char in string.characters {
@@ -107,7 +108,7 @@ extension Password {
         return generatedPassword
     }
     
-    private static func bytesToHex(_ bytes:Array<UInt8>) -> String {
+    fileprivate static func bytesToHex(_ bytes:Array<UInt8>) -> String {
         var result = ""
         let bigInteger = Bignum(data: Data(bytes: bytes))
         result = bigInteger.asString(withBase: 16)
