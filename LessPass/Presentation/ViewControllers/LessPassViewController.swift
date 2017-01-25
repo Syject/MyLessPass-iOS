@@ -40,10 +40,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         
         doUIPreparations()
         
-        siteTextField.delegate = self
-        loginTextField.delegate = self
-        masterPasswordTextField.delegate = self
-        
         setDefaultValues()
     }
     
@@ -182,13 +178,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         guard !siteTextField.text!.isEmpty else { showFieldMissedAlert(for: "site"); return false }
         guard !loginTextField.text!.isEmpty else { showFieldMissedAlert(for: "login"); return false }
         guard !masterPasswordTextField.text!.isEmpty else { showFieldMissedAlert(for: "master password"); return false }
-        return true
-    }
-}
-
-extension LessPassViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
         return true
     }
 }

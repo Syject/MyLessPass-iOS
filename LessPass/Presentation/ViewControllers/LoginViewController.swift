@@ -14,11 +14,12 @@ class LoginViewController: UIViewController {
     var delegate: LoginViewControllerDelegate?
     @IBOutlet weak var emailTextBox: UITextField!
     @IBOutlet weak var passwordTextBox: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextBox.text = KeychainSwift().get("email")
         passwordTextBox.text = KeychainSwift().get("password")
+        
     }
     
     @IBAction func didLaterPress(_ sender: Any) {
