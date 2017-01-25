@@ -111,16 +111,24 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
             viewController.delegate = self
         case "showLessPassNew":
             let viewController = (segue.destination as! UINavigationController).childViewControllers[0] as! LessPassViewController
+            setNavigationItem(onDestinationViewController: viewController)
             viewController.delegate = self
         case "showLessPassSaved":
             let viewController = (segue.destination as! UINavigationController).childViewControllers[0] as! LessPassViewController
             viewController.choosedSavedOption = sender as? SavedOption
+            setNavigationItem(onDestinationViewController: viewController)
             viewController.delegate = self
         default:
             return
         }
     }
+
+    func setNavigationItem(onDestinationViewController destinationViewController: UIViewController) {
+        destinationViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        destinationViewController.navigationItem.leftItemsSupplementBackButton = true
+    }
 }
+
 
 extension SavedSitesViewController: UITableViewDataSource {
     internal func numberOfSections(in tableView: UITableView) -> Int {
