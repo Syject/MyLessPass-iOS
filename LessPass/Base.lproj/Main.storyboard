@@ -546,14 +546,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="BOK-T3-6LS">
                             <connections>
-                                <segue destination="wgc-YH-tfm" kind="showDetail" id="ftO-7Z-xtQ"/>
+                                <segue destination="wgc-YH-tfm" kind="showDetail" identifier="showLessPassNew" id="ftO-7Z-xtQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="accountBarButton" destination="0eU-Vq-Nb6" id="ROx-M1-x7L"/>
                         <outlet property="tableView" destination="HmC-Yz-K5e" id="FiQ-sR-Ldb"/>
-                        <segue destination="wgc-YH-tfm" kind="show" id="QUz-6F-9dN"/>
                         <segue destination="f7a-Az-84r" kind="presentation" identifier="presentLoginViewController" id="DOE-Oi-x0S"/>
                     </connections>
                 </viewController>
@@ -597,6 +596,6 @@
         <image name="logo" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Op4-1A-yWH"/>
+        <segue reference="ftO-7Z-xtQ"/>
     </inferredMetricsTieBreakers>
 </document>

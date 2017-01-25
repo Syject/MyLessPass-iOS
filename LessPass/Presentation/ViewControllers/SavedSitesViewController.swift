@@ -9,7 +9,7 @@
 import UIKit
 import SCLAlertView
 
-class SavedSitesViewController: UIViewController, LoginViewControllerDelegate {
+class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,LessPassViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var accountBarButton: UIBarButtonItem!
@@ -107,6 +107,9 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate {
         switch segueIdentifier {
         case "presentLoginViewController":
             let viewController = segue.destination as! LoginViewController
+            viewController.delegate = self
+        case "showLessPassNew":
+            let viewController = (segue.destination as! UINavigationController).childViewControllers[0] as! LessPassViewController
             viewController.delegate = self
         default:
             return

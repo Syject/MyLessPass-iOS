@@ -29,12 +29,14 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     private var waitAlertResponder:SCLAlertViewResponder?
     static private var isFirstTimeLauched:Bool = true
     
+    var delegate: LessPassViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if LessPassViewController.isFirstTimeLauched {
             switchToMaster()
-            SCLAlertView().showEdit("123", subTitle: "123")
+            SCLAlertView().showEdit("TouchID", subTitle: "qweqweqwe")
             LessPassViewController.isFirstTimeLauched = false
         }
         
@@ -46,7 +48,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     func setDefaultValues() {
         siteTextField.text = UserDefaults.standard.string(forKey: "siteTextField")
         loginTextField.text = UserDefaults.standard.string(forKey: "loginTextField")
-        masterPasswordTextField.text = UserDefaults.standard.string(forKey: "masterPasswordTextField")
         
         lowerCheckBox.on = !UserDefaults.standard.bool(forKey: "lowerCheckBox")
         upperCheckBox.on = !UserDefaults.standard.bool(forKey: "upperCheckBox")
@@ -112,8 +113,7 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     @IBAction func asDefaultDidPressed(_ sender: Any) {
         UserDefaults.standard.set(siteTextField.text, forKey: "siteTextField")
         UserDefaults.standard.set(loginTextField.text, forKey: "loginTextField")
-        UserDefaults.standard.set(masterPasswordTextField.text, forKey: "masterPasswordTextField")
-        
+       
         UserDefaults.standard.set(!lowerCheckBox.on, forKey: "lowerCheckBox")
         UserDefaults.standard.set(!upperCheckBox.on, forKey: "upperCheckBox")
         UserDefaults.standard.set(!numbersCheckBox.on, forKey: "numbersCheckBox")
@@ -137,7 +137,13 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
         options.hasNumbers = !numbersCheckBox.on
         options.hasSymbols = !symbolsCheckBox.on
         
-        API.saveOptions(options, onSuccess: {}, onFailure: {_ in})
+        API.saveOptions(options, onSuccess: { [unowned self] in
+            self.delegate?.getSitesList()
+        }, onFailure: {error in
+            DispatchQueue.main.async {
+                SCLAlertView().showError("Error", subTitle: error)
+            }
+        })
     }
     
     @IBAction func lengthValueChanged(_ sender: UIStepper) {
