@@ -173,6 +173,7 @@ class API {
                     guard let data = response.data else { print("Request returned no data"); return }
                     let json = JSON(data: data)
                     debugPrint(json)
+                    successBlock()
                 case .failure(let error):
                     failureBlock(error.localizedDescription)
                 }
