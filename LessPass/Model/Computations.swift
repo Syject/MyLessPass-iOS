@@ -52,18 +52,10 @@ extension Password {
     
     private static func getConfiguredRules(withTemplate template:Template) -> [String] {
         var result:[String] = []
-        if template.hasLowerCaseLetters {
-            result.append(Constants.lowercase)
-        }
-        if template.hasUpperCaseLetters {
-            result.append(Constants.uppercase)
-        }
-        if template.hasNumbers {
-            result.append(Constants.numbers)
-        }
-        if template.hasSymbols {
-            result.append(Constants.symbols)
-        }
+        if template.hasLowerCaseLetters { result.append(Constants.lowercase) }
+        if template.hasUpperCaseLetters { result.append(Constants.uppercase) }
+        if template.hasNumbers { result.append(Constants.numbers) }
+        if template.hasSymbols { result.append(Constants.symbols) }
         return result
     }
     
