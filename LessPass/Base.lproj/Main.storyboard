@@ -287,6 +287,9 @@
                                 <state key="normal" title="As default">
                                     <color key="titleColor" red="0.95000961260000005" green="1" blue="0.99057686820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="asDefaultDidPressed:" destination="Pza-FY-5HX" eventType="touchUpInside" id="17x-hN-s8K"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

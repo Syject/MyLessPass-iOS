@@ -53,6 +53,9 @@ class API {
                         return
                     }
                     self.token = token
+                    KeychainSwift().set(email, forKey: "email")
+                    KeychainSwift().set(password, forKey: "password")
+                    KeychainSwift().set(token, forKey: "token")
                     successBlock(token)
                 case .failure(let error):
                     failureBlock(error.localizedDescription)
@@ -81,6 +84,7 @@ class API {
                         return
                     }
                     self.token = token
+                    KeychainSwift().set(token, forKey: "token")
                     successBlock(token)
                 case .failure(let error):
                     failureBlock(error.localizedDescription)
@@ -144,6 +148,7 @@ class API {
     }
     
     static func saveOptions(_ options: Options, onSuccess successBlock:@escaping SuccessBlock, onFailure failureBlock:@escaping FailureBlock) {
+        guard let token = token else { print("No token"); return }
         let parameters: Parameters = [
             "counter" : options.counter,
             "length" : options.length,
@@ -173,15 +178,15 @@ class API {
                 }
         }
     }
-
+    
     
     static func deleteOption(withId optionId:String, onSuccess successBlock:@escaping SuccessBlock, onFailure failureBlock: @escaping FailureBlock) {
         guard let token = token else { print("No token"); return }
         let headers: HTTPHeaders = [ "Authorization": "JWT \(token)" ]
         
         Alamofire.request(Constants.URLs.options + "\(optionId)/",
-                          method: .delete,
-                          headers: headers)
+            method: .delete,
+            headers: headers)
             .responseJSON { response in
                 switch response.result {
                 case .success(_):

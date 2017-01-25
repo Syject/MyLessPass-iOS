@@ -34,6 +34,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
+
         getSitesList()
     }
     
@@ -43,6 +44,9 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate {
             API.unauthorizeUser()
             getSitesList()
             accountBarButton.title = "Log in"
+            KeychainSwift().delete("email")
+            KeychainSwift().delete("password")
+            KeychainSwift().delete("token")
         } else {
             presentLoginViewControler()
         }
@@ -63,6 +67,8 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate {
             }, onFailure: { _ in
                 SCLAlertView().showError("Error", subTitle: "Cannot receive sites list")
             })
+            
+            
         } else {
             sites = []
             if tableView.refreshControl!.isRefreshing {

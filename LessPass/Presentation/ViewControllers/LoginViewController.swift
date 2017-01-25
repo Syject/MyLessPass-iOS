@@ -15,6 +15,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextBox: UITextField!
     @IBOutlet weak var passwordTextBox: UITextField!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailTextBox.text = KeychainSwift().get("email")
+        passwordTextBox.text = KeychainSwift().get("password")
+    }
+    
     @IBAction func didLaterPress(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
