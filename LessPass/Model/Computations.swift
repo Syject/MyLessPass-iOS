@@ -42,11 +42,7 @@ extension Password {
         } else {
             salt += String(format:"%2X", template.counter)
         }
-        let result = bytesToHex(try! PKCS5.PBKDF2(password: Array(lesspassData.masterPassword.utf8),
-                                                  salt: Array(salt.utf8),
-                                                  iterations: 100000,
-                                                  keyLength: template.keylen,
-                                                  variant: .sha256).calculate())
+        let result = bytesToHex(try! PKCS5.PBKDF2(password: Array(lesspassData.masterPassword.utf8), salt: Array(salt.utf8), iterations: 100000, keyLength: template.keylen, variant: .sha256).calculate())
         return result
     }
     

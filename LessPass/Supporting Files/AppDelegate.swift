@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
+        IQKeyboardManager.sharedManager().enable = true
         return true
     }
 
