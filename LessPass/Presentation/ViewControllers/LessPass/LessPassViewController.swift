@@ -37,6 +37,7 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
 
         if LessPassViewController.isFirstTimeLauched {
             switchToMaster()
+            delegate = (splitViewController?.viewControllers[0] as! UINavigationController).viewControllers[0] as! SavedSitesViewController
             LessPassViewController.isFirstTimeLauched = false
         }
         
@@ -89,6 +90,7 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
 
     @IBAction fileprivate func generateDidPressed(_ sender: Any) {
         self.view.endEditing(true)
+        guard !masterPasswordTextField.text!.isEmpty else { showFieldMissedAlert(for: "master password"); return }
         if !checkFields() {
             return
         }
@@ -203,7 +205,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
     fileprivate func checkFields() -> Bool {
         guard !siteTextField.text!.isEmpty else { showFieldMissedAlert(for: "site"); return false }
         guard !loginTextField.text!.isEmpty else { showFieldMissedAlert(for: "login"); return false }
-        guard !masterPasswordTextField.text!.isEmpty else { showFieldMissedAlert(for: "master password"); return false }
         return true
     }
 }
