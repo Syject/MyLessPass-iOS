@@ -6,4 +6,5 @@ use_frameworks!
    pod 'Alamofire'
    pod 'SwiftyJSON'
    pod 'SCrypto', '~> 2.0.0'
+   pod 'HockeySDK', '~> 4.1.3'
 end
