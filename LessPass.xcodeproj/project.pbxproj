@@ -23,7 +23,6 @@
 		9E7109EC1E361F9B0039FC5D /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109E71E361F9B0039FC5D /* Template.swift */; };
 		9E7109F01E3627530039FC5D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109EF1E3627530039FC5D /* Helpers.swift */; };
 		9E7109F51E362B3B0039FC5D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109F41E362B3B0039FC5D /* API.swift */; };
-		B105D3D01E39613E00F827AD /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B105D3CF1E39613E00F827AD /* LocalAuthentication.framework */; };
 		B10BB9371E3905490085F112 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB9361E3905490085F112 /* KeychainHelper.swift */; };
 		B10BB9501E3911B60085F112 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB93A1E3911B60085F112 /* IQNSArray+Sort.swift */; };
 		B10BB9511E3911B60085F112 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB93B1E3911B60085F112 /* IQUIScrollView+Additions.swift */; };
@@ -71,6 +70,7 @@
 		9E7109E71E361F9B0039FC5D /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		9E7109EF1E3627530039FC5D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9E7109F41E362B3B0039FC5D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9EE9456B1E3A230F0055003F /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		B105D3CF1E39613E00F827AD /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B10BB9361E3905490085F112 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		B10BB93A1E3911B60085F112 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
@@ -108,7 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B105D3D01E39613E00F827AD /* LocalAuthentication.framework in Frameworks */,
 				7543BF61C220924F4356FC98 /* Pods_LessPass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +162,7 @@
 				B1762E471E2D369000A8D122 /* Assets.xcassets */,
 				9E2E13451E266F5700FF1C9C /* AppDelegate.swift */,
 				9E2E13471E266F5700FF1C9C /* Info.plist */,
+				9EE9456B1E3A230F0055003F /* Bridging.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -352,6 +352,7 @@
 				9E09E0651E24FD5800B9F6EF /* Resources */,
 				4BA06AF3D74265C22408AB6A /* [CP] Embed Pods Frameworks */,
 				1C61EA0425AE468A8ED6157F /* [CP] Copy Pods Resources */,
+				9EE9456A1E3A22180055003F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -456,6 +457,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LessPass/Pods-LessPass-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9EE9456A1E3A22180055003F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -632,6 +646,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.syject.LessPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LessPass/Supporting Files/Bridging.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -647,6 +662,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.syject.LessPass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LessPass/Supporting Files/Bridging.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
