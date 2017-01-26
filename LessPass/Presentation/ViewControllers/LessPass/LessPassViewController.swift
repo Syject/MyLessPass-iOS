@@ -84,6 +84,7 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
                 let detailNavigationController = parent as! UINavigationController
                 let masterNavigationController = detailNavigationController.parent as! UINavigationController
                 masterNavigationController.popToRootViewController(animated: false)
+                delegate = masterNavigationController.viewControllers[0] as! SavedSitesViewController
             } else {
                 delegate = (splitViewController.viewControllers[0] as! UINavigationController).viewControllers[0] as! SavedSitesViewController
             }
