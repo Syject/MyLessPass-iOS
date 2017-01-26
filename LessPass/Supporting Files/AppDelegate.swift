@@ -31,6 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         IQKeyboardManager.sharedManager().enable = true
+        
+        // Hockey App
+        BITHockeyManager.shared().configure(withIdentifier: "b14b900621d8401bb0846e169140c670")
+        BITHockeyManager.shared().start()
+        BITHockeyManager.shared().authenticator.authenticateInstallation()
+        
         return true
     }
 
