@@ -37,7 +37,6 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
 
         if LessPassViewController.isFirstTimeLauched {
             switchToMaster()
-            SCLAlertView().showEdit("TouchID", subTitle: "qweqweqwe")
             LessPassViewController.isFirstTimeLauched = false
         }
         
