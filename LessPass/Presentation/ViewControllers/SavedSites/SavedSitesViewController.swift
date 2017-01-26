@@ -15,8 +15,14 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
     @IBOutlet fileprivate weak var accountBarButton: UIBarButtonItem!
     
     fileprivate let searchController = UISearchController(searchResultsController: nil)
-    fileprivate dynamic var sites = [SavedOption]()
+    fileprivate dynamic var allSites = [SavedOption]()
     fileprivate var filteredSites = [SavedOption]()
+    fileprivate var sitesToDisplay: [SavedOption] {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredSites
+        }
+        return allSites
+    }
     
     
     internal override func viewDidLoad() {
@@ -25,7 +31,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         tableView.delegate = self
         tableView.dataSource = self
         
-        addObserver(self, forKeyPath: "sites", options: .new, context: nil)
+        addObserver(self, forKeyPath: "allSites", options: .new, context: nil)
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(SavedSitesViewController.getSitesList), for: .valueChanged)
@@ -40,7 +46,6 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
     }
     
     @IBAction fileprivate func accountDidPressed(_ sender: Any) {
-        
         if API.isUserAuthorized {
             API.unauthorizeUser()
             getSitesList()
@@ -61,17 +66,15 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
             API.refreshToken(onSuccess: { _ in
                 
             }, onFailure: { _ in
-            
+                
             })
             API.getAllOptions(onSuccess: { downloadedSites in
-                self.sites = downloadedSites
+                self.allSites = downloadedSites
             }, onFailure: { _ in
                 SCLAlertView().showError("Error", subTitle: "Cannot receive sites list")
             })
-            
-            
         } else {
-            sites = []
+           allSites = []
             if tableView.refreshControl!.isRefreshing {
                 SCLAlertView().showError("Error", subTitle: "You need to authorize first")
             }
@@ -82,7 +85,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
     internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let keyPath = keyPath {
             switch keyPath {
-            case "sites":
+            case "allSites":
                 tableView.isHidden = !API.isUserAuthorized
                 tableView.reloadData()
             default:
@@ -92,7 +95,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
     }
     
     fileprivate func filterContentForSearchText(searchText: String, scope: String = "All") {
-        filteredSites = sites.filter { site in
+        filteredSites = allSites.filter { site in
             return site.site.lowercased().contains(searchText.lowercased())
                 || site.login.lowercased().contains(searchText.lowercased())
         }
@@ -101,10 +104,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
     }
     
     internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard let segueIdentifier = segue.identifier else {
-            return
-        }
+        guard let segueIdentifier = segue.identifier else { return }
         switch segueIdentifier {
         case "presentLoginViewController":
             let viewController = segue.destination as! LoginViewController
@@ -133,7 +133,7 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
 extension SavedSitesViewController: UITableViewDataSource {
     internal func numberOfSections(in tableView: UITableView) -> Int {
         var result = 0
-        if sites.count != 0 {
+        if sitesToDisplay.count != 0 {
             tableView.separatorStyle = .singleLine
             result = 1
             tableView.backgroundView = nil
@@ -144,20 +144,12 @@ extension SavedSitesViewController: UITableViewDataSource {
         return result
     }
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filteredSites.count
-        }
-        return sites.count
+        return sitesToDisplay.count
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "siteCell", for: indexPath)
-        let site: SavedOption
-        if searchController.isActive && searchController.searchBar.text != "" {
-            site = filteredSites[indexPath.row]
-        } else {
-            site = sites[indexPath.row]
-        }
+        let site = sitesToDisplay[indexPath.row]
         cell.textLabel?.text = site.site
         cell.detailTextLabel?.text = site.login
         return cell
@@ -169,13 +161,15 @@ extension SavedSitesViewController: UITableViewDelegate {
         return true
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showLessPassSaved", sender: sites[indexPath.row])
+        performSegue(withIdentifier: "showLessPassSaved", sender: sitesToDisplay[indexPath.row])
     }
     
     internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            API.deleteOption(withId: sites[indexPath.row].id!, onSuccess: {
-                self.sites.remove(at: indexPath.row)
+            let site =  sitesToDisplay[indexPath.row]
+            API.deleteOption(withId: site.id!, onSuccess: {
+                self.allSites.remove(at: self.allSites.index(of: site)!)
+                self.updateSearchResults(for: self.searchController)
             }, onFailure: { _ in
                 self.tableView.isEditing = false
             })

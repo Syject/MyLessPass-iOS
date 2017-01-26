@@ -23,6 +23,7 @@
 		9E7109EC1E361F9B0039FC5D /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109E71E361F9B0039FC5D /* Template.swift */; };
 		9E7109F01E3627530039FC5D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109EF1E3627530039FC5D /* Helpers.swift */; };
 		9E7109F51E362B3B0039FC5D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7109F41E362B3B0039FC5D /* API.swift */; };
+		B105D3D01E39613E00F827AD /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B105D3CF1E39613E00F827AD /* LocalAuthentication.framework */; };
 		B10BB9371E3905490085F112 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB9361E3905490085F112 /* KeychainHelper.swift */; };
 		B10BB9501E3911B60085F112 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB93A1E3911B60085F112 /* IQNSArray+Sort.swift */; };
 		B10BB9511E3911B60085F112 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10BB93B1E3911B60085F112 /* IQUIScrollView+Additions.swift */; };
@@ -70,6 +71,7 @@
 		9E7109E71E361F9B0039FC5D /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		9E7109EF1E3627530039FC5D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9E7109F41E362B3B0039FC5D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B105D3CF1E39613E00F827AD /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		B10BB9361E3905490085F112 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		B10BB93A1E3911B60085F112 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		B10BB93B1E3911B60085F112 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B105D3D01E39613E00F827AD /* LocalAuthentication.framework in Frameworks */,
 				7543BF61C220924F4356FC98 /* Pods_LessPass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +119,7 @@
 		5FE0E4FF7EA35D9052149D39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B105D3CF1E39613E00F827AD /* LocalAuthentication.framework */,
 				FB149BF726B720D874F00651 /* Pods_LessPass.framework */,
 			);
 			name = Frameworks;
