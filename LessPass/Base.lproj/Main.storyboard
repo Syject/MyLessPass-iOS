@@ -335,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Es-Nq-R89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.71014492753625" y="599.18478260869574"/>
+            <point key="canvasLocation" x="1110" y="678"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZBZ-2X-es2">
@@ -374,7 +374,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vu0-6G-4yz">
                                                 <rect key="frame" x="27.5" y="0.0" width="189.5" height="204"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZWC-nD-afO">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LessPass-icon-white" translatesAutoresizingMaskIntoConstraints="NO" id="ZWC-nD-afO">
                                                         <rect key="frame" x="20" y="0.0" width="150" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="9Sh-xT-gkf"/>
@@ -477,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3IS-bx-Su7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.71014492753625" y="-860.054347826087"/>
+            <point key="canvasLocation" x="1886" y="-143"/>
         </scene>
         <!--Saved sites-->
         <scene sceneID="LhU-S4-20U">
@@ -590,11 +590,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BiN-HY-ygI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="601"/>
+            <point key="canvasLocation" x="180" y="678"/>
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="512" height="512"/>
+        <image name="LessPass-icon-white" width="180" height="180"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ftO-7Z-xtQ"/>
