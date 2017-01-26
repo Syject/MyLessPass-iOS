@@ -45,6 +45,18 @@ class SavedSitesViewController: UIViewController, LoginViewControllerDelegate,Le
         getSitesList()
     }
     
+    internal func tryToAutologin() {
+        if let token = KeychainSwift().get("token") {
+            API.token = token
+            API.refreshToken(onSuccess: {_ in 
+                self.accountBarButton.title = "Log out"
+                self.getSitesList()
+            }, onFailure: { _ in
+                API.token = nil
+            })
+        }
+    }
+    
     @IBAction fileprivate func accountDidPressed(_ sender: Any) {
         if API.isUserAuthorized {
             API.unauthorizeUser()

@@ -25,7 +25,7 @@ class API {
             static let options = "\(base)api/passwords/"
         }
     }
-    static private var token: String?
+    static var token: String?
     
     static var isUserAuthorized: Bool { return token != nil }
     

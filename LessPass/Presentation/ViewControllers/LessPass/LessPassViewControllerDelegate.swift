@@ -8,4 +8,5 @@
 
 protocol LessPassViewControllerDelegate {
     func getSitesList()
+    func tryToAutologin()
 }

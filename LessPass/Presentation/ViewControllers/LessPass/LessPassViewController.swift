@@ -39,6 +39,7 @@ class LessPassViewController: UIViewController, BEMCheckBoxDelegate {
             switchToMaster()
             delegate = (splitViewController?.viewControllers[0] as! UINavigationController).viewControllers[0] as! SavedSitesViewController
             LessPassViewController.isFirstTimeLauched = false
+            delegate?.tryToAutologin()
         }
         
         doUIPreparations()
