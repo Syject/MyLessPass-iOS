@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CryptoSwift
+import SCrypto
 
 extension Password {
     
@@ -42,7 +42,13 @@ extension Password {
         } else {
             salt += String(format:"%2X", template.counter)
         }
-        let result = bytesToHex(try! PKCS5.PBKDF2(password: Array(lesspassData.masterPassword.utf8), salt: Array(salt.utf8), iterations: 100000, keyLength: template.keylen, variant: .sha256).calculate())
+
+        let password = lesspassData.masterPassword.data(using: String.Encoding.utf8)!
+        let derivedKey = try! password.derivedKey(Data(Array(salt.utf8)),
+                                                  pseudoRandomAlgorithm: .sha256,
+                                                  rounds: 100000,
+                                                  derivedKeyLength: template.keylen)
+        let result = bytesToHex(Array(derivedKey))
         
         return result
     }
