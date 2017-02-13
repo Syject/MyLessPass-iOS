@@ -10,7 +10,7 @@ iOS client application for LessPass open source password manager (https://lesspa
 
 This project is licensed under the terms of the GNU GPLv3.
 
-## Contributors :heart::heart::heart::heart:
+## Contributors :heart::heart::heart::heart::heart:
 
 Please do not contact contributors directly to report problems.
 
