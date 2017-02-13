@@ -7,7 +7,7 @@ iOS client application for LessPass open source password manager (https://lesspa
  * [EN] [LessPass How Does It Work?](https://blog.lesspass.com/lesspass-how-it-works-dde742dd18a4#.vbgschksh)
  
 ## Walkthrough
-![Alt text](walkthrough.gif?raw=true "Optional Title")=250x
+![Loading gif...](walkthrough.gif?raw=true)
 ## License
 
 This project is licensed under the terms of the GNU GPLv3.
