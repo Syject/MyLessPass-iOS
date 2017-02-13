@@ -14,4 +14,4 @@ This project is licensed under the terms of the GNU GPLv3.
 
 Please do not contact contributors directly to report problems.
 
- * [Daniel Slupskiy](https://github.com/notdetninja47                
+ * [Daniel Slupskiy](https://github.com/notdetninja47)                
